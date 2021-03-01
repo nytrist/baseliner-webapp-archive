@@ -1,0 +1,93 @@
+<html>
+<head>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<script type="text/javascript">
+window.addEventListener( "load", function () {
+  function sendData(form) {
+    const XHR = new XMLHttpRequest();
+    // Bind the FormData object and the form element
+    const FD = new FormData( form );
+
+    // Define what happens on successful data submission
+    XHR.addEventListener( "load", function(event) {
+
+      alert(event.target.responseText);
+    } );
+
+    // Define what happens in case of error
+    XHR.addEventListener( "error", function( event ) {
+      alert( 'There was an error sending to the server.' );
+    } );
+
+		//change the url depending on the form sent
+		if (form.id == "addGateway") {
+    // Set up our request
+    XHR.open( "POST", "https://baseliner-japan-api.herokuapp.com/gateway" );
+			}
+		else if (form.id == "addStation") {
+    // Set up our request
+    XHR.open( "POST", "https://baseliner-japan-api.herokuapp.com/station" );
+			}
+
+    // The data sent is what the user provided in the form
+    XHR.send( FD );
+  }
+//end FUNCTION SEND DATA
+
+// CHECK FORM SUBMITTED
+
+  // Add listener to both forms..
+  document.forms[0].addEventListener( "submit", function ( event ) {
+    event.preventDefault();
+		let form = document.getElementById( "addGateway" );
+		sendData(form);
+  } );
+
+	document.forms[1].addEventListener( "submit", function ( event ) {
+    event.preventDefault();
+		let form = document.getElementById( "addStation" );
+    sendData(form);
+  } );
+
+} );
+</script>
+</head>
+<body>
+	<div class="container">
+			<div class="logo">
+				<img src="{{url_for('static', filename='freaklabs.png')}}"/><img src="{{url_for('static', filename='monashuni.png')}}"/>
+			</div>
+			<div class="title" align="center">
+			<h2><a href="/"> Japan Sandbox</a></h2>
+						<a href = "/">Home</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href = "/stations">Sensor Stations</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href = "/readings">All readings</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href = "/add">Add</a> / <a href = "/delete">Delete</a>
+				<br/><br/>
+				<h3>Add Gateway or Sensor Station</h3>
+</div>
+<div>
+		<form id="addGateway">
+		  <h4>Add gateway</h4>
+		  <input id="gw_id" type="text" required name="gw_id" placeholder="Enter gateway id">
+		  <input id="gw_site" type="text" required name="gw_site" placeholder="Enter site eg. Wychitella">
+		  <input id="gw_locate" type="text" required name="gw_locate" placeholder="Enter map URL">
+		  <button type="submit">Add or Update</button>
+		</form><br/>
+		<form id="addStation">
+		  <h4>Add sensor station</h4>
+		  <input id="ss_id" type="text" required name="ss_id" placeholder="Enter sensor station id"><br/>
+		  <input type="text" name="gw_id" placeholder="Link to gateway id"><br/>
+		  <input type="text" name="ss_site" placeholder="Enter site eg Wychitella"><br/>
+		  <input type="text" name="ss_num" placeholder="Enter sensor station no"><br/>
+		  <input type="text" name="ss_locate" placeholder="Enter map link"><br/>
+		  <input type="text" name="ss_vwcIdShlw" placeholder="VWC sensor id (shallow)"><br/>
+		  <input type="text" name="ss_vwcIdMid" placeholder="VWC sensor id (mid)"><br/>
+		  <input type="text" name="ss_vwcIdDeep" placeholder="VWC sensor id (deep)"><br/>
+		  <input type="text" name="ss_phId" placeholder="DF Robot pH sensor id"><br/>
+		  <input type="text" name="ss_co2Id" placeholder="co2 sensor id"><br/>
+		  <input type="text" name="ss_tempId" placeholder="DS temp sensor id"><br/>
+		  <input type="text" name="ss_bmeId" placeholder="bme sensor id"><br/>
+		  <button type="submit">Add or Update</button>
+		</form>
+</div>
+	</div>
+</body>
+</html>

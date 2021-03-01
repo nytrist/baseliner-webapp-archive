@@ -1,0 +1,124 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Helvetica, Arial, sans-serif;
+	/*color: #048353; blue  #101010: darker grey*/
+	color: #282928;    /*color:  #282928  = grey / black  #048353; blue  #101010: darker grey*/
+}
+/*
+ * Centering the body content
+ */
+.container {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+div.container {
+  padding: 10px 10px 0;
+  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
+}
+
+div.title {
+	justify-content: center;
+	vertical-align: top;
+  padding: 0;
+  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
+}
+
+div.main_menu {
+	justify-content: center;
+	vertical-align: top;
+  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
+}
+
+div.results {
+  padding: 10px 0 30px 0;
+  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
+}
+div.readings {
+  padding: 10px 0 30px 0;
+  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
+}
+
+/*images*/
+img {
+  border: 0px solid #ddd;
+  border-radius: 0px;
+  padding: 5px;
+  width: 150px;
+}
+
+/*fonts*/
+h2 {
+	font-size: 3em;
+	color: #b7410e; /*green  = #048353*/
+  text-align: top;
+  margin-top: 0;
+  margin-bottom: 10;
+  margin-left: 0;
+  margin-right: 0;
+	letter-spacing: -2px;
+}
+
+h2 a:link {
+  /*body: otherwise blue #136acc*/
+	color: #b7410e;
+	text-decoration: none;
+}
+ h2 a:visited {
+	color: #b7410e;
+ 	text-decoration: none;
+}
+
+h2 a:hover: {
+	color: #b7410e;
+ 	text-decoration: none;
+}
+
+h2 a.active {
+	color: #b7410e;
+ 	text-decoration: none;
+}
+
+h3 {
+	font-size: 1.7em;
+  margin: 0px;
+  text-align: top;
+  letter-spacing: -1px;
+  color: #2f6690; /*#b7410e8*/
+  text-decoration: none;
+
+}
+/*
+h4 {
+  color: #2f6690; #b7410e8
+}
+*/
+a:link {
+		color: #282928; /*body: otherwise blue #136acc*/
+		text-decoration: underline;
+}
+/* A link that has been visited */
+a:visited {
+		color: #282928;
+}
+/* A link that is hovered on */
+a:hover {
+    color: #d2691e; /*red = #dd3333*/
+}
+/* A link that is selected */
+a:active {
+    color: #282928;
+
+		/*#048353 green*/;
+}

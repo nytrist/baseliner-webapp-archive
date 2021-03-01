@@ -1,0 +1,107 @@
+<html>
+<head>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<script type="text/javascript">
+/*calls api endpoint */
+	function httpGetAsync(theUrl, callback) {
+			var xmlHttp = new XMLHttpRequest();
+			xmlHttp.onreadystatechange = function() {
+					if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+							callback(xmlHttp.responseText);
+			}
+			xmlHttp.open("GET", theUrl, true); // true for asynchronous
+			xmlHttp.send(null);
+	}
+
+
+	function appendData(data) {
+		var mainContainer = document.getElementById("results");
+		var dataLength = data.readings.length;
+
+		//Display sensor station and gateway id
+		var station = document.createElement("div");
+		station.innerHTML = '<br/><h4>Sensor Station ' + data.ss_num + '</h4> ' +
+		'Station ID: ' + data.ss_id + '<br/><br/>' +
+		'Readings: <br/><br/>';
+		mainContainer.appendChild(station);
+
+//display readings
+		//get readings length to loop
+		if(dataLength>0)	{
+	// CREATE DYNAMIC TABLE.
+			var table = document.createElement("table");
+			table.style.width = '90%';
+			table.setAttribute('border', '1');
+			table.setAttribute('cellspacing', '0');
+			table.setAttribute('cellpadding', '5');
+		// retrieve column header ()
+			var col = []; // define an empty array
+			for (var i = 0; i < dataLength; i++) {
+				for (var key in data.readings[i]) {
+					if (col.indexOf(key) === -1) {
+						col.push(key);
+					}
+				}
+			}
+
+		// CREATE TABLE HEAD .
+			var tHead = document.createElement("thead");
+
+
+		// CREATE ROW FOR TABLE HEAD .
+			var hRow = document.createElement("tr");
+
+		// ADD COLUMN HEADER TO ROW OF TABLE HEAD.
+			for (var i = 0; i < col.length; i++) {
+					var th = document.createElement("th");
+					th.innerHTML = col[i];
+					hRow.appendChild(th);
+			}
+			tHead.appendChild(hRow);
+			table.appendChild(tHead);
+
+		// CREATE TABLE BODY .
+			var tBody = document.createElement("tbody");
+
+		// ADD COLUMN HEADER TO ROW OF TABLE HEAD.
+			for (var i = 0; i < dataLength; i++) {
+
+					var bRow = document.createElement("tr"); // CREATE ROW FOR EACH RECORD .
+
+
+					for (var j = 0; j < col.length; j++) {
+						var td = document.createElement("td");
+						td.innerHTML = data.readings[i][col[j]];
+						bRow.appendChild(td);
+					}
+					tBody.appendChild(bRow)
+
+			}
+			table.appendChild(tBody);
+
+			// FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
+			var divContainer = document.getElementById("readings");
+			divContainer.innerHTML = "";
+			divContainer.appendChild(table);
+
+			}
+}
+</script>
+</head>
+<body>
+	<div class="container">
+		<div class="logo">
+			<img src="{{url_for('static', filename='freaklabs.png')}}"/><img src="{{url_for('static', filename='monashuni.png')}}"/>
+		</div>
+		<div class="title" align="center">
+		<h2><a href="/"> Japan Sandbox</a></h2>
+				<a href = "/">Home</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href = "/stations">Sensor Stations</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href = "/readings">All readings</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href = "/add">Add</a> / <a href = "/delete">Delete</a>
+				<br/><br/>
+				<h3>Sensor Station</h3>
+</div>
+	<div id= "results"></div>
+	<div id = "readings"></div>
+		<script src="{{url_for('static', filename='scripts.js')}}"></script>
+	</div>
+</body>
+</html>

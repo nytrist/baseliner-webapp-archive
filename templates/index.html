@@ -1,0 +1,55 @@
+<html>
+<head>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<script type="text/javascript">
+/*calls nodes endpoint */
+	function httpGetAsync(theUrl, callback) {
+			var xmlHttp = new XMLHttpRequest();
+			xmlHttp.onreadystatechange = function() {
+					if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+							callback(xmlHttp.responseText);
+			}
+			xmlHttp.open("GET", theUrl, true); // true for asynchronous
+			xmlHttp.send(null);
+	}
+	//call the get url function, return json as response
+	function appendData(data) {
+	//create container div
+	var mainContainer = document.getElementById("results");
+
+	//loop through data
+	for (var i = 0; i < data.length; i++) {
+		var gateway = document.createElement("div");
+		gateway.innerHTML = '<br/><h4>Site: ' + data[i].gw_site + '</h4>' +
+		'Gateway Id: ' + data[i].gw_id +
+		'<p> Location: <a href="' + data[i].gw_locate + ' " target="_blank">Map Link</a></p>';
+			for (var j = 0; j < data[i].stations.length; j++) {
+				var gatewayStations = document.createElement("div");
+				gatewayStations.innerHTML = 'Sensor Station  ' + data[i].stations[j].ss_num + ' : <a href="/station/' +
+				data[i].stations[j].ss_id + '">Readings</a><br/><br/>';
+				//data[i].stations[j].ss_id + '</a><br/><br/>';
+				gateway.appendChild(gatewayStations);
+			}
+		mainContainer.appendChild(gateway);
+	}
+}
+
+</script>
+</head>
+<body>
+	<div class="container">
+			<div class="logo">
+				<img src="{{url_for('static', filename='freaklabs.png')}}"/><img src="{{url_for('static', filename='monashuni.png')}}"/>
+			</div>
+			<div class="title" align="center">
+				<h2><a href="/"> Japan Sandbox</a></h2>
+						<a href = "/">Home</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href = "/stations">Sensor Stations</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href = "/readings">All readings</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href = "/add">Add</a> / <a href = "/delete">Delete</a>
+				<br/><br/>
+				<h3>Overview</h3>
+</div>
+	<div id= "results"></div>
+	<div id = "readings"></div>
+			<script src="{{url_for('static', filename='scripts.js')}}"></script>
+	</div>
+</body>
+</html>

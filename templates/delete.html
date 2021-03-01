@@ -1,0 +1,79 @@
+<html>
+<head>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<script type="text/javascript">
+window.addEventListener( "load", function () {
+  function sendData(form) {
+    const XHR = new XMLHttpRequest();
+    // Bind the FormData object and the form element
+    const FD = new FormData( form );
+
+    // Define what happens on successful data submission
+    XHR.addEventListener( "load", function(event) {
+      alert( event.target.responseText );
+    } );
+
+    // Define what happens in case of error
+    XHR.addEventListener( "error", function( event ) {
+      alert( 'There was an error sending to the server.' );
+    } );
+
+		//change the url depending on the form sent
+		if (form.id == "deleteGateway") {
+    // Set up our request
+    XHR.open( "DELETE", "https://baseliner-japan-api.herokuapp.com/gateway" );
+			}
+		else if (form.id == "deleteStation") {
+    // Set up our request
+    XHR.open( "DELETE", "https://baseliner-japan-api.herokuapp.com/station" );
+			}
+
+    // The data sent is what the user provided in the form
+    XHR.send( FD );
+  }
+//end FUNCTION SEND DATA
+
+// CHECK FORM SUBMITTED
+
+  // Add listener to both forms..
+  document.forms[0].addEventListener( "submit", function ( event ) {
+    event.preventDefault();
+		let form = document.getElementById( "deleteGateway" );
+		sendData(form);
+  } );
+
+	document.forms[1].addEventListener( "submit", function ( event ) {
+    event.preventDefault();
+		let form = document.getElementById( "deleteStation" );
+    sendData(form);
+  } );
+
+} );
+</script>
+</head>
+<body>
+	<div class="container">
+			<div class="logo">
+				<img src="{{url_for('static', filename='freaklabs.png')}}"/><img src="{{url_for('static', filename='monashuni.png')}}"/>
+			</div>
+			<div class="title" align="center">
+			<h2><a href="/"> Japan Sandbox</a></h2>
+						<a href = "/">Home</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href = "/stations">Sensor Stations</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href = "/readings">All readings</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href = "/add">Add</a> / <a href = "/delete">Delete</a>
+				<br/><br/>
+				<h3>Delete Gateway or Sensor Station</h3>
+</div>
+<div>
+		<form id="deleteGateway">
+		  <h4>Delete gateway</h4>
+		  <input id="gw_id" type="text" required name="gw_id" placeholder="Enter gateway id">
+		  <button type="submit">Delete</button>
+		</form><br/>
+		<form id="deleteStation">
+		  <h4>Delete Sensor Station</h4>
+		  <input id="ss_id" type="text" required name="ss_id" placeholder="Enter sensor station id">
+		  <button type="submit">Delete</button>
+		</form>
+</div>
+	</div>
+</body>
+</html>
