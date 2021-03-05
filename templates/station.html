@@ -20,8 +20,8 @@
 
 		//Display sensor station and gateway id
 		var station = document.createElement("div");
-		station.innerHTML = '<br/><h4>Sensor Station ' + data.ss_num + '</h4> ' +
-		'Station ID: ' + data.ss_id + '<br/><br/>' +
+		station.innerHTML = '<br/><h4>Sensor Station ' + data.ss_id + '</h4> ' +
+		'Station Address: ' + data.ss_num + '<br/><br/>' +
 		'Readings: <br/><br/>';
 		mainContainer.appendChild(station);
 
@@ -94,14 +94,18 @@
 			<img src="{{url_for('static', filename='freaklabs.png')}}"/><img src="{{url_for('static', filename='monashuni.png')}}"/>
 		</div>
 		<div class="title" align="center">
-		<h2><a href="/"> Japan Sandbox</a></h2>
-				<a href = "/">Home</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href = "/stations">Sensor Stations</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href = "/readings">All readings</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href = "/add">Add</a> / <a href = "/delete">Delete</a>
-				<br/><br/>
+			<h2><a href="/"> Baseliner</a></h2>
+			<a href = "/">home</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href = "/stations">sensor stations</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href = "/readings">All readings</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href = "/add">add</a> / <a href = "/delete">delete</a>
+			<br/><br/>
 				<h3>Sensor Station</h3>
 </div>
 	<div id= "results"></div>
 	<div id = "readings"></div>
 		<script src="{{url_for('static', filename='scripts.js')}}"></script>
+		<p class="footer">A collaboration between</p>
+	<div class="logo">
+		<img src="{{url_for('static', filename='freaklabs.png')}}"/><img src="{{url_for('static', filename='monashuni.png')}}"/><img src="{{url_for('static', filename='bha.png')}}"/><img src="{{url_for('static', filename='parksvic.png')}}"/>
+	</div>
 	</div>
 </body>
 </html>

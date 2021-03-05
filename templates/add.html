@@ -19,14 +19,15 @@ window.addEventListener( "load", function () {
       alert( 'There was an error sending to the server.' );
     } );
 
-		//change the url depending on the form sent
+		#change the url depending on the form sent
 		if (form.id == "addGateway") {
     // Set up our request
-    XHR.open( "POST", "https://baseliner-japan-api.herokuapp.com/gateway" );
+    XHR.open( "POST", "http://127.0.0.1:5000/gateway" );
 			}
+
 		else if (form.id == "addStation") {
     // Set up our request
-    XHR.open( "POST", "https://baseliner-japan-api.herokuapp.com/station" );
+    XHR.open( "POST", "http://127.0.0.1:5000/station" );
 			}
 
     // The data sent is what the user provided in the form
@@ -37,7 +38,7 @@ window.addEventListener( "load", function () {
 // CHECK FORM SUBMITTED
 
   // Add listener to both forms..
-  document.forms[0].addEventListener( "submit", function ( event ) {
+	document.forms[0].addEventListener( "submit", function ( event ) {
     event.preventDefault();
 		let form = document.getElementById( "addGateway" );
 		sendData(form);
@@ -54,39 +55,45 @@ window.addEventListener( "load", function () {
 </head>
 <body>
 	<div class="container">
-			<div class="logo">
-				<img src="{{url_for('static', filename='freaklabs.png')}}"/><img src="{{url_for('static', filename='monashuni.png')}}"/>
-			</div>
 			<div class="title" align="center">
-			<h2><a href="/"> Japan Sandbox</a></h2>
-						<a href = "/">Home</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href = "/stations">Sensor Stations</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href = "/readings">All readings</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href = "/add">Add</a> / <a href = "/delete">Delete</a>
+				<h2><a href="/"> Baseliner </a></h2>
+				<a href = "/">home</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href = "/stations">sensor stations</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href = "/readings">All readings</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href = "/add">add</a> / <a href = "/delete">delete</a>
 				<br/><br/>
 				<h3>Add Gateway or Sensor Station</h3>
 </div>
 <div>
-		<form id="addGateway">
-		  <h4>Add gateway</h4>
-		  <input id="gw_id" type="text" required name="gw_id" placeholder="Enter gateway id">
-		  <input id="gw_site" type="text" required name="gw_site" placeholder="Enter site eg. Wychitella">
-		  <input id="gw_locate" type="text" required name="gw_locate" placeholder="Enter map URL">
-		  <button type="submit">Add or Update</button>
-		</form><br/>
+	<form id="addGateway">
+		<h4>Add gateway</h4>
+		gateway id (must same as device address): <input id="gw_id" type="text" required name="gw_id" placeholder="Enter gateway id"><br/><br/>
+		deployment site: <input id="gw_site" type="text" required name="gw_site" placeholder="Enter site eg. Wychitella"><br/><br/>
+		device address (must be same as gw id): <input id="gw_addr" type="text" required name="gw_addr" placeholder="Enter gateway address - same as gw_id"><br/><br/>
+		gps location: <input id="gw_locate" type="text" required name="gw_locate" placeholder="Enter map URL"><br/><br/>
+		api url (eg. monash-api.soil.watch): <input id="gw_url" type="text" required name="gw_url" placeholder="Enter api URL"><br/><br/>
+		api directory (eg.reading): <input id="gw_dir" type="text" required name="gw_dir" placeholder="Enter api directory"><br/><br/>
+		api port (eg.80): <input id="gw_port" type="text" required name="gw_port" placeholder="Enter api port"><br/><br/>
+		<button type="submit">Add or Update</button>
+	</form><br/>
 		<form id="addStation">
 		  <h4>Add sensor station</h4>
-		  <input id="ss_id" type="text" required name="ss_id" placeholder="Enter sensor station id"><br/>
-		  <input type="text" name="gw_id" placeholder="Link to gateway id"><br/>
-		  <input type="text" name="ss_site" placeholder="Enter site eg Wychitella"><br/>
-		  <input type="text" name="ss_num" placeholder="Enter sensor station no"><br/>
-		  <input type="text" name="ss_locate" placeholder="Enter map link"><br/>
-		  <input type="text" name="ss_vwcIdShlw" placeholder="VWC sensor id (shallow)"><br/>
-		  <input type="text" name="ss_vwcIdMid" placeholder="VWC sensor id (mid)"><br/>
-		  <input type="text" name="ss_vwcIdDeep" placeholder="VWC sensor id (deep)"><br/>
-		  <input type="text" name="ss_phId" placeholder="DF Robot pH sensor id"><br/>
-		  <input type="text" name="ss_co2Id" placeholder="co2 sensor id"><br/>
-		  <input type="text" name="ss_tempId" placeholder="DS temp sensor id"><br/>
-		  <input type="text" name="ss_bmeId" placeholder="bme sensor id"><br/>
-		  <button type="submit">Add or Update</button>
+		  sensor station number (eg. sensor station 1): <input id="ss_id" type="text" required name="ss_id" placeholder="eg. sensor station 1"><br/>
+			<br/>
+		  links to gateway id: <input type="text" name="gw_id" placeholder="eg. 1"><br/><br/>
+		  deployment site: <input type="text" name="ss_site" placeholder="eg. monash sandbox"><br/><br/>
+		  device address: <input type="text" name="ss_num" placeholder="eg. 1001"><br/><br/>
+		  gps location: <input type="text" name="ss_locate" placeholder="eg. google maps link"><br/><br/>
+		  vegetronic sensor - shallow: <input type="text" name="ss_vwcIdShlw" placeholder="eg.VWC_MNH1a"><br/><br/>
+		  vegetronic sensor - mid: <input type="text" name="ss_vwcIdMid" placeholder="eg.VWC_MNH1b"><br/><br/>
+		  vegetronic sensor - deep: <input type="text" name="ss_vwcIdDeep" placeholder="eg.VWC_MNH1c"><br/><br/>
+		  pH sensor: <input type="text" name="ss_phId" placeholder="eg.HZOI536"><br/><br/>
+		  co2 sensor: <input type="text" name="ss_co2Id" placeholder="eg.CO2_1"><br/><br/>
+		  DS temperature sensor: <input type="text" name="ss_tempId" placeholder="eg. DS18B20_1"><br/><br/>
+		  BME sensor (if attached, otherwise leave blank): <input type="text" name="ss_bmeId" placeholder="eg. bme_2"><br/><br/>
+		  <button type="submit">Add</button>
 		</form>
+</div>
+<p class="footer">A collaboration between</p>
+<div class="logo">
+	<img src="{{url_for('static', filename='freaklabs.png')}}"/><img src="{{url_for('static', filename='monashuni.png')}}"/><img src="{{url_for('static', filename='bha.png')}}"/><img src="{{url_for('static', filename='parksvic.png')}}"/>
 </div>
 	</div>
 </body>

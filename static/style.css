@@ -55,7 +55,7 @@ img {
   border: 0px solid #ddd;
   border-radius: 0px;
   padding: 5px;
-  width: 150px;
+	height:80px;
 }
 
 /*fonts*/
@@ -99,6 +99,18 @@ h3 {
   text-decoration: none;
 
 }
+
+p.footer {
+	font-size: 1em;
+	font-weight: bold;
+	color: #b7410e; /*green  = #048353*/
+  text-align: top;
+  margin-top: 30;
+  margin-bottom: 10;
+  margin-left: 0;
+  margin-right: 0;
+}
+
 /*
 h4 {
   color: #2f6690; #b7410e8

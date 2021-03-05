@@ -18,14 +18,16 @@ window.addEventListener( "load", function () {
       alert( 'There was an error sending to the server.' );
     } );
 
+  XHR.open( "DELETE", "http://127.0.0.1:5000/station" );
+
 		//change the url depending on the form sent
 		if (form.id == "deleteGateway") {
     // Set up our request
-    XHR.open( "DELETE", "https://baseliner-japan-api.herokuapp.com/gateway" );
+    XHR.open( "DELETE", "http://127.0.0.1:5000/gateway" );
 			}
 		else if (form.id == "deleteStation") {
     // Set up our request
-    XHR.open( "DELETE", "https://baseliner-japan-api.herokuapp.com/station" );
+    XHR.open( "DELETE", "http://127.0.0.1:5000/station" );
 			}
 
     // The data sent is what the user provided in the form
@@ -36,6 +38,7 @@ window.addEventListener( "load", function () {
 // CHECK FORM SUBMITTED
 
   // Add listener to both forms..
+
   document.forms[0].addEventListener( "submit", function ( event ) {
     event.preventDefault();
 		let form = document.getElementById( "deleteGateway" );
@@ -53,26 +56,27 @@ window.addEventListener( "load", function () {
 </head>
 <body>
 	<div class="container">
-			<div class="logo">
-				<img src="{{url_for('static', filename='freaklabs.png')}}"/><img src="{{url_for('static', filename='monashuni.png')}}"/>
-			</div>
 			<div class="title" align="center">
-			<h2><a href="/"> Japan Sandbox</a></h2>
-						<a href = "/">Home</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href = "/stations">Sensor Stations</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href = "/readings">All readings</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href = "/add">Add</a> / <a href = "/delete">Delete</a>
+				<h2><a href="/">Baseliner</a></h2>
+				<a href = "/">home</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href = "/stations">sensor stations</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href = "/readings">All readings</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href = "/add">add</a> / <a href = "/delete">delete</a>
 				<br/><br/>
 				<h3>Delete Gateway or Sensor Station</h3>
 </div>
 <div>
-		<form id="deleteGateway">
-		  <h4>Delete gateway</h4>
-		  <input id="gw_id" type="text" required name="gw_id" placeholder="Enter gateway id">
-		  <button type="submit">Delete</button>
-		</form><br/>
+	<form id="deleteGateway">
+		<h4>Delete gateway</h4>
+		<input id="gw_id" type="text" required name="gw_id" placeholder="Enter gateway id">
+		<button type="submit">Delete</button>
+	</form><br/>
 		<form id="deleteStation">
-		  <h4>Delete Sensor Station</h4>
+		  <h4>Delete sensor station</h4>
 		  <input id="ss_id" type="text" required name="ss_id" placeholder="Enter sensor station id">
 		  <button type="submit">Delete</button>
 		</form>
+</div>
+<p class="footer">A collaboration between</p>
+<div class="logo">
+	<img src="{{url_for('static', filename='freaklabs.png')}}"/><img src="{{url_for('static', filename='monashuni.png')}}"/><img src="{{url_for('static', filename='bha.png')}}"/><img src="{{url_for('static', filename='parksvic.png')}}"/>
 </div>
 	</div>
 </body>
