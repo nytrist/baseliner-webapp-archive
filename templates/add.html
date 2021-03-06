@@ -19,15 +19,15 @@ window.addEventListener( "load", function () {
       alert( 'There was an error sending to the server.' );
     } );
 
-		#change the url depending on the form sent
+		//change the url depending on the form sent
 		if (form.id == "addGateway") {
     // Set up our request
-    XHR.open( "POST", "http://127.0.0.1:5000/gateway" );
+    XHR.open( "POST", "http://japan-api.soil.watch/gateway" );
 			}
 
 		else if (form.id == "addStation") {
     // Set up our request
-    XHR.open( "POST", "http://127.0.0.1:5000/station" );
+    XHR.open( "POST", "http://japan-api.soil.watch/station" );
 			}
 
     // The data sent is what the user provided in the form
@@ -66,18 +66,18 @@ window.addEventListener( "load", function () {
 		<h4>Add gateway</h4>
 		gateway id (must same as device address): <input id="gw_id" type="text" required name="gw_id" placeholder="Enter gateway id"><br/><br/>
 		deployment site: <input id="gw_site" type="text" required name="gw_site" placeholder="Enter site eg. Wychitella"><br/><br/>
-		device address (must be same as gw id): <input id="gw_addr" type="text" required name="gw_addr" placeholder="Enter gateway address - same as gw_id"><br/><br/>
+		device address (must be same as gateway id): <input id="gw_addr" type="text" required name="gw_addr" placeholder="Enter gateway address - same as gw_id"><br/><br/>
 		gps location: <input id="gw_locate" type="text" required name="gw_locate" placeholder="Enter map URL"><br/><br/>
 		api url (eg. monash-api.soil.watch): <input id="gw_url" type="text" required name="gw_url" placeholder="Enter api URL"><br/><br/>
 		api directory (eg.reading): <input id="gw_dir" type="text" required name="gw_dir" placeholder="Enter api directory"><br/><br/>
-		api port (eg.80): <input id="gw_port" type="text" required name="gw_port" placeholder="Enter api port"><br/><br/>
-		<button type="submit">Add or Update</button>
+		api port (80): <input id="gw_port" type="text" required name="gw_port" placeholder="Enter port 80"><br/><br/>
+		<button type="submit">Add</button>
 	</form><br/>
 		<form id="addStation">
 		  <h4>Add sensor station</h4>
-		  sensor station number (eg. sensor station 1): <input id="ss_id" type="text" required name="ss_id" placeholder="eg. sensor station 1"><br/>
+		  sensor station id (eg. sensor station 1, must be different to device address): <input id="ss_id" type="text" required name="ss_id" placeholder="eg. sensor station 1"><br/>
 			<br/>
-		  links to gateway id: <input type="text" name="gw_id" placeholder="eg. 1"><br/><br/>
+		  links to gateway (gw_id): <input type="text" name="gw_id" placeholder="eg. 1001"><br/><br/>
 		  deployment site: <input type="text" name="ss_site" placeholder="eg. monash sandbox"><br/><br/>
 		  device address: <input type="text" name="ss_num" placeholder="eg. 1001"><br/><br/>
 		  gps location: <input type="text" name="ss_locate" placeholder="eg. google maps link"><br/><br/>

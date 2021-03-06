@@ -18,16 +18,14 @@ window.addEventListener( "load", function () {
       alert( 'There was an error sending to the server.' );
     } );
 
-  XHR.open( "DELETE", "http://127.0.0.1:5000/station" );
-
 		//change the url depending on the form sent
 		if (form.id == "deleteGateway") {
     // Set up our request
-    XHR.open( "DELETE", "http://127.0.0.1:5000/gateway" );
+    XHR.open( "DELETE", "http://japan-api.soil.watch/gateway" );
 			}
 		else if (form.id == "deleteStation") {
     // Set up our request
-    XHR.open( "DELETE", "http://127.0.0.1:5000/station" );
+    XHR.open( "DELETE", "http://japan-api.soil.watch/station" );
 			}
 
     // The data sent is what the user provided in the form
