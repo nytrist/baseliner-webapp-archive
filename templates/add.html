@@ -65,22 +65,22 @@ window.addEventListener( "load", function () {
 	<form id="addGateway">
 		<h4>Add gateway</h4>
 		gateway id (must same as device address): <input id="gw_id" type="text" required name="gw_id" placeholder="Enter gateway id"><br/><br/>
-		deployment site: <input id="gw_site" type="text" required name="gw_site" placeholder="Enter site eg. Wychitella"><br/><br/>
+		deployment site: <input id="gw_site" type="text" required name="gw_site" placeholder="Japan"><br/><br/>
 		device address (must be same as gateway id): <input id="gw_addr" type="text" required name="gw_addr" placeholder="Enter gateway address - same as gw_id"><br/><br/>
-		gps location: <input id="gw_locate" type="text" required name="gw_locate" placeholder="Enter map URL"><br/><br/>
-		api url (eg. monash-api.soil.watch): <input id="gw_url" type="text" required name="gw_url" placeholder="Enter api URL"><br/><br/>
-		api directory (eg.reading): <input id="gw_dir" type="text" required name="gw_dir" placeholder="Enter api directory"><br/><br/>
-		api port (80): <input id="gw_port" type="text" required name="gw_port" placeholder="Enter port 80"><br/><br/>
+		gps map location: <input id="gw_locate" type="text" required name="gw_locate" placeholder="Enter full map URL"><br/><br/>
+		api url (japan-api.soil.watch): <input id="gw_url" type="text" required name="gw_url" placeholder="japan-api.soil.watch"><br/><br/>
+		api directory (reading): <input id="gw_dir" type="text" required name="gw_dir" placeholder="reading"><br/><br/>
+		api port (80): <input id="gw_port" type="text" required name="gw_port" placeholder="80"><br/><br/>
 		<button type="submit">Add</button>
 	</form><br/>
 		<form id="addStation">
 		  <h4>Add sensor station</h4>
 		  sensor station id (eg. sensor station 1, must be different to device address): <input id="ss_id" type="text" required name="ss_id" placeholder="eg. sensor station 1"><br/>
 			<br/>
-		  links to gateway (gw_id): <input type="text" name="gw_id" placeholder="eg. 1001"><br/><br/>
-		  deployment site: <input type="text" name="ss_site" placeholder="eg. monash sandbox"><br/><br/>
-		  device address: <input type="text" name="ss_num" placeholder="eg. 1001"><br/><br/>
-		  gps location: <input type="text" name="ss_locate" placeholder="eg. google maps link"><br/><br/>
+		  links to gateway (gw_id above): <input type="text" name="gw_id" placeholder="enter gw_id from above"><br/><br/>
+		  deployment site: <input type="text" name="ss_site" placeholder="Japan"><br/><br/>
+		  device address: <input type="text" name="ss_num" placeholder="device address"><br/><br/>
+		  gps map location: <input type="text" name="ss_locate" placeholder="enter full map url"><br/><br/>
 		  vegetronic sensor - shallow: <input type="text" name="ss_vwcIdShlw" placeholder="eg.VWC_MNH1a"><br/><br/>
 		  vegetronic sensor - mid: <input type="text" name="ss_vwcIdMid" placeholder="eg.VWC_MNH1b"><br/><br/>
 		  vegetronic sensor - deep: <input type="text" name="ss_vwcIdDeep" placeholder="eg.VWC_MNH1c"><br/><br/>
