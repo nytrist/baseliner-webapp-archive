@@ -64,11 +64,11 @@ window.addEventListener( "load", function () {
 <div>
 	<form id="addGateway">
 		<h4>Add gateway</h4>
-		gateway id (must same as device address): <input id="gw_id" type="text" required name="gw_id" placeholder="Enter gateway id"><br/><br/>
+		gateway id (must be same as device address): <input id="gw_id" type="text" required name="gw_id" placeholder="Enter gateway id"><br/><br/>
 		deployment site: <input id="gw_site" type="text" required name="gw_site" placeholder="Japan"><br/><br/>
 		device address (must be same as gateway id): <input id="gw_addr" type="text" required name="gw_addr" placeholder="Enter gateway address - same as gw_id"><br/><br/>
 		gps map location: <input id="gw_locate" type="text" required name="gw_locate" placeholder="Enter full map URL"><br/><br/>
-		api url (japan-api.soil.watch): <input id="gw_url" type="text" required name="gw_url" placeholder="japan-api.soil.watch"><br/><br/>
+		api url (wychitella-api.soil.watch): <input id="gw_url" type="text" required name="gw_url" placeholder="wychitella-api.soil.watch"><br/><br/>
 		api directory (reading): <input id="gw_dir" type="text" required name="gw_dir" placeholder="reading"><br/><br/>
 		api port (80): <input id="gw_port" type="text" required name="gw_port" placeholder="80"><br/><br/>
 		<button type="submit">Add</button>
@@ -79,7 +79,7 @@ window.addEventListener( "load", function () {
 			<br/>
 		  links to gateway (gw_id above): <input type="text" name="gw_id" placeholder="enter gw_id from above"><br/><br/>
 		  deployment site: <input type="text" name="ss_site" placeholder="Japan"><br/><br/>
-		  device address: <input type="text" name="ss_num" placeholder="device address"><br/><br/>
+		  device address (must be different to station id): <input type="text" name="ss_num" placeholder="device address"><br/><br/>
 		  gps map location: <input type="text" name="ss_locate" placeholder="enter full map url"><br/><br/>
 		  vegetronic sensor - shallow: <input type="text" name="ss_vwcIdShlw" placeholder="eg.VWC_MNH1a"><br/><br/>
 		  vegetronic sensor - mid: <input type="text" name="ss_vwcIdMid" placeholder="eg.VWC_MNH1b"><br/><br/>

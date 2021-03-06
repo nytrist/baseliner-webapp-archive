@@ -25,7 +25,7 @@
 		'<p> gateway GPS: <a href="' + data[i].gw_locate + ' " target="_blank">map link</a></p>';
 			for (var j = 0; j < data[i].stations.length; j++) {
 				var gatewayStations = document.createElement("div");
-				gatewayStations.innerHTML = '<a href="/stations">' + data[i].stations[j].ss_id + '</a> : <a href="/station/' +
+				gatewayStations.innerHTML = '<a href="/stations">sensor station ' + data[i].stations[j].ss_id + '</a> : <a href="/station/' +
 				data[i].stations[j].ss_id + '">readings</a><br/><br/>';
 				//data[i].stations[j].ss_id + '</a><br/><br/>';
 				gateway.appendChild(gatewayStations);
