@@ -1,6 +1,6 @@
 		//set correct url to pass to api
 		var thisURL = window.location.protocol + "//" + window.location.host + window.location.pathname
-		var apihost = 'wychitella-api.soil.watch'; //local address of api - stations
+		var apihost = 'au-lab-api.soil.watch'; //local address of api - stations
 		var apiURL = window.location.protocol + "//" + apihost + window.location.pathname
 
 		//call api
